@@ -11,7 +11,9 @@
 }
 
 body {
-  background-color: rgba(255, 253, 235, 0.96);
+  background-color: rgb(255, 253, 235);
+  min-height: 100vh;
+  min-width: 100vw;
 }
 
 .container {
@@ -46,15 +48,24 @@ body {
 }
 
 .header a:hover {
-  border-bottom: solid 1px rgba(255, 253, 235, 0.96);
-  background-color: rgba(255, 253, 235, 0.96);
+  border-bottom: solid 1px rgb(255, 253, 235);
+  background-color: rgb(255, 253, 235);
   z-index: 10;
 }
 
 .footer {
-  grid-row: 3;
-  height: 20px;
+  grid-row: 4;
   grid-column: 1/13;
+  background-color: white;
+  position: relative;
+  bottom: 0;
+  color: black;
+  font-family: dinish;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  padding: 10px 0 10px 0;
+  height: 20px;
 }
 
 .main {
@@ -126,6 +137,7 @@ img {
 }
 
 .gallery__img {
+  margin-bottom: 10px;
   -o-object-fit: cover;
      object-fit: cover;
   width: 100%;

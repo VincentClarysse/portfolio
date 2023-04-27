@@ -16,7 +16,7 @@
 }
 
 
-$color1: rgba(255, 253, 235, 0.96);
+$color1: rgb(255, 253, 235);
 $color2: white;
 
 * {
@@ -25,6 +25,8 @@ $color2: white;
 
 body {
     background-color: $color1;
+    min-height: 100vh;
+    min-width: 100vw;
 }
 
 .container{
@@ -73,10 +75,20 @@ body {
 }
 
 .footer {
-    grid-row: 3;
-    height: 20px;
-    // background-color: aqua;
+    grid-row: 4;
     grid-column: 1/13;
+    background-color: $color2;
+
+    position: relative;
+    bottom: 0;
+    color: black;
+    font-family: dinish;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+
+    padding: 10px 0 10px 0;
+    height: 20px
 }
 
 .main {
@@ -160,7 +172,7 @@ img {
 
 .gallery__img {
   // scroll-snap-align: start;
-  // margin-bottom: 10px;
+  margin-bottom: 10px;
   object-fit: cover;
   width: 100%;
   overflow-y: hidden;
