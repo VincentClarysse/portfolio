@@ -62,6 +62,7 @@ body {
   grid-column: 1/13;
   display: grid;
   grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: auto;
 }
 
 #title {
@@ -125,10 +126,11 @@ img {
 }
 
 .gallery__img {
-  margin-bottom: 10px;
   -o-object-fit: cover;
      object-fit: cover;
   width: 100%;
+  overflow-y: hidden;
+  max-height: 100%;
 }
 
 .lil-nav {

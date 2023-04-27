@@ -86,6 +86,7 @@ body {
 
     display: grid;
     grid-template-columns: repeat(12,1fr);
+    grid-template-rows: auto;
 }
 
 #title {
@@ -115,6 +116,7 @@ body {
   padding: 0 40px 0 20px;
   // background-color: aqua;
   overflow-y: scroll;
+  // margin-bottom: 10px;
 }
 
 .projectdiv::-webkit-scrollbar { //chrome opera safari
@@ -158,9 +160,13 @@ img {
 
 .gallery__img {
   // scroll-snap-align: start;
-  margin-bottom: 10px;
+  // margin-bottom: 10px;
   object-fit: cover;
   width: 100%;
+  overflow-y: hidden;
+
+  // height: auto;
+  max-height: 100%;
 }
 
 .lil-nav {
