@@ -82,13 +82,12 @@ for(let i=0; i<lilnavs.length; i++) {
     })
 }
 
-
-
 const observer = new IntersectionObserver(function (entries, observer) 
 {
     for(let i =0; i < entries.length ; i++) {
-        if(entries[i].isIntersecting){
+        if(entries[i].isIntersecting) {
             console.log(entries[i].target)
+            section.classList.add('trans_up')
             }
     }
     }
@@ -101,8 +100,7 @@ const the_animation = document.querySelectorAll('.main');
 for (let i = 0; i < the_animation.length; i++) {
     const elements = the_animation[i];
 
-setTimeout(()=> {
-    observer.observe(elements);
-},1000)
+ observer.observe(elements);
+
 
 }

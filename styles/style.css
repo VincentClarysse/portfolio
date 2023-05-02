@@ -28,6 +28,7 @@ body {
 }
 
 .header {
+  z-index: 15;
   background-color: rgb(253, 253, 253);
   height: 8vh;
   grid-column: 1/13;
@@ -111,7 +112,7 @@ body {
   height: 100vh;
 }
 
-.landing_main {
+#landing_main {
   grid-column: 1/13;
   display: grid;
   grid-template-columns: repeat(12, 1fr);
@@ -243,4 +244,9 @@ img {
 
 .lil-nav__img:hover {
   transform: scale(1.02);
+  z-index: 0;
+}
+
+#about_main {
+  background-color: azure;
 }/*# sourceMappingURL=style.css.map */

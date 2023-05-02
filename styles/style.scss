@@ -42,6 +42,7 @@ body {
 }
 
 .header {
+    z-index: 15;
     background-color: $color2;
     height: 8vh;
     // border-bottom: solid black 1px;
@@ -155,7 +156,7 @@ body {
   height: 100vh;
 }
 
-.landing_main {
+#landing_main {
   grid-column: 1/13;
 
   display: grid;
@@ -309,5 +310,10 @@ img {
 
 .lil-nav__img:hover {
   transform: scale(1.02);
+  z-index: 0;
+}
+
+#about_main {
+  background-color: azure;
 }
 
