@@ -8,11 +8,22 @@ const grad_hr = document.getElementById("grad_hr");
 
 const carrousel_section = document.getElementById('carrousel_main')
 
-let left = (section.offsetLeft);
-let width = (section.clientWidth);
+function setSection(){
+    setTimeout(()=>{
+    let currentleft = (section.offsetLeft);
+    let currentwidth = (section.clientWidth);
 
-
-
+    grad_hr.style.background= "linear-gradient(to right, " 
+    + "black "+ (currentleft-11)+"px"
+    + ", " 
+    + "transparent "+ (currentleft-10)+"px"
+    + ", " 
+    + "transparent "+ (currentleft+currentwidth+7)+"px"
+    + ", " 
+    + "black "+ (currentleft+currentwidth+8)+"px"
+    + ")";
+    },50)
+}
 
 
 window.onload = (event) => {
@@ -24,15 +35,17 @@ window.onload = (event) => {
     }
     projectsection.style.height= image1_height + "px";
 
-    grad_hr.style.background= "linear-gradient(to right, " 
-    + "black "+ (left-11)+"px"
-    + ", " 
-    + "transparent "+ (left-10)+"px"
-    + ", " 
-    + "transparent "+ (left+width+7)+"px"
-    + ", " 
-    + "black "+ (left+width+8)+"px"
-    + ")";
+    // grad_hr.style.background= "linear-gradient(to right, " 
+    // + "black "+ (left-11)+"px"
+    // + ", " 
+    // + "transparent "+ (left-10)+"px"
+    // + ", " 
+    // + "transparent "+ (left+width+7)+"px"
+    // + ", " 
+    // + "black "+ (left+width+8)+"px"
+    // + ")";
+
+    setSection();
 };
 
 window.addEventListener("resize", (event) => {
@@ -51,18 +64,19 @@ window.addEventListener("resize", (event) => {
         // galleryarray[i].style.maxHeight= galleryarray[i].style.height;
     }
 
-    let currentleft = (section.offsetLeft);
-    let currentwidth = (section.clientWidth);
+    // let currentleft = (section.offsetLeft);
+    // let currentwidth = (section.clientWidth);
 
-    grad_hr.style.background= "linear-gradient(to right, " 
-    + "black "+ (currentleft-11)+"px"
-    + ", " 
-    + "transparent "+ (currentleft-10)+"px"
-    + ", " 
-    + "transparent "+ (currentleft+currentwidth+7)+"px"
-    + ", " 
-    + "black "+ (currentleft+currentwidth+8)+"px"
-    + ")";
+    // grad_hr.style.background= "linear-gradient(to right, " 
+    // + "black "+ (currentleft-11)+"px"
+    // + ", " 
+    // + "transparent "+ (currentleft-10)+"px"
+    // + ", " 
+    // + "transparent "+ (currentleft+currentwidth+7)+"px"
+    // + ", " 
+    // + "black "+ (currentleft+currentwidth+8)+"px"
+    // + ")";
+    setSection();
 });
 
 for(let i=0; i<lilnavs.length; i++) {
@@ -82,17 +96,26 @@ for(let i=0; i<lilnavs.length; i++) {
     })
 }
 
+const hide = (intersect) => {
+    switch (intersect) {
+        case "carrousel_main": 
+        section.classList.add("hide");
+        grad_hr.style.background= "linear-gradient(to right,black, black)";
+        break;
+    }
+}
+
 const observer = new IntersectionObserver(function (entries, observer) 
 {
     for(let i =0; i < entries.length ; i++) {
         if(entries[i].isIntersecting) {
-            console.log(entries[i].target)
-            section.classList.add('trans_up')
+            console.log(entries[i].target.id)
+            hide(entries[i].target.id)
             }
     }
     }
     ,{
-        threshold: 0.05
+        threshold: 0.1
     });
 
 const the_animation = document.querySelectorAll('.main');

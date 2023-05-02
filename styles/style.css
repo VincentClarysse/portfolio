@@ -45,6 +45,7 @@ body {
   width: 100vw;
   position: absolute;
   top: 8vh;
+  transform-style: smooth;
 }
 
 .header a {
@@ -87,9 +88,9 @@ body {
   z-index: 20;
 }
 
-.trans_up {
-  transform: translateY(-300px);
+.hide {
   opacity: 0;
+  transition-duration: 100ms;
 }
 
 .footer {
@@ -118,7 +119,6 @@ body {
   grid-template-columns: repeat(12, 1fr);
   grid-template-rows: auto;
   height: 92vh;
-  background-color: azure;
 }
 
 #vincent {
@@ -245,8 +245,4 @@ img {
 .lil-nav__img:hover {
   transform: scale(1.02);
   z-index: 0;
-}
-
-#about_main {
-  background-color: azure;
 }/*# sourceMappingURL=style.css.map */

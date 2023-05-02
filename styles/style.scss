@@ -69,18 +69,8 @@ body {
   width: 100vw;
   position: absolute;
   top: 8vh;
+  transform-style: smooth;
 }
-
-// #hide {
-//   position: absolute;
-//   width: 100vw;
-//   top: 8vh;
-//   height: 6vh;
-//   background-image: linear-gradient(180deg, 
-//   $color1 3vh, $color1 100%);
-
-//   z-index: 10;
-// }
 
 .header a {
     grid-row: 1;
@@ -128,9 +118,10 @@ body {
   z-index: 20;
 }
 
-.trans_up{
-  transform: translateY(-300px);
+.hide{
+  // transform: translateY(-150px);
   opacity: 0;
+  transition-duration: 100ms;
 }
 
 .footer {
@@ -164,7 +155,7 @@ body {
   grid-template-rows: auto;
   height: 92vh;
 
-  background-color: azure;
+  // background-color: azure;
 }
 
 #vincent {
@@ -314,6 +305,6 @@ img {
 }
 
 #about_main {
-  background-color: azure;
+  // background-color: azure;
 }
 
