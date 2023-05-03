@@ -126,11 +126,11 @@ const show = (intersect) => {
     switch (intersect) {
         case "landing_main": changesection("Portfolio");
         break;
-        case "carrousel_main": changesection("Projects")
+        case "carrousel_main": changesection("Projects");
         break;
-        case "about_main": changesection("About Me")
+        case "about_main": changesection("About Me");
         break;
-        case "contact_main": changesection("Contact")
+        case "contact_main": changesection("Contact");
         break;
     }
 }
@@ -198,7 +198,7 @@ for (let i = 0; i<navElements.length; i++) {
     
      nav_observer.unobserve(elements);
      setTimeout(() => {
-        nav_observer.observe(elements);
+        observer.observe(elements);
         console.log("done")
      }, 1000);
     }
