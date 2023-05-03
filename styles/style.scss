@@ -45,6 +45,7 @@ body {
     z-index: 15;
     background-color: $color2;
     height: 8vh;
+    min-height: 8vh;
     // border-bottom: solid black 1px;
     // background-color: aqua;
     grid-column: 1/13;
@@ -61,15 +62,31 @@ body {
 }
 
 #grad_hr {
-  border: 0;
   height: 1px;
   // background-image: linear-gradient(90deg, 
   // black, black 6px, transparent 649px);
 
-  width: 100vw;
+  // width: 100vw;
+  position: absolute;
+  left: 0px;
+  top: 8vh;
+  background-color: black;
+
+  transition-duration: 350ms ;
+  // transition-delay: 250ms;
+  transform-origin: left;
+  transform-style: flat;
+}
+
+#right_hr {
   position: absolute;
   top: 8vh;
-  transform-style: smooth;
+  right: 0px;
+  width: 190px;
+
+  height: 1px;
+  background-color: black;
+  z-index: 30;
 }
 
 .header a {
@@ -104,24 +121,28 @@ body {
     z-index: 10;
 }
 
+.active {
+  border-bottom: solid 1px $color1;
+  background-color: $color1;
+  z-index: 10;
+}
+
 #section {
   font-family: BluuNext;
   font-size: 60pt;
   // font-size: 5vw;
   text-align: right;
-  grid-column: 6/12;
-
   position: absolute;
   top: 1.5vh;
-  right: 100px;
-
+  right: 200px;
   z-index: 20;
+
+  transition-duration: 350ms;
 }
 
 .hide{
-  // transform: translateY(-150px);
-  opacity: 0;
-  transition-duration: 100ms;
+  transform: translateY(-200px);
+  // opacity: 0;
 }
 
 .footer {
@@ -138,8 +159,8 @@ body {
     justify-content: center;
     border-top: solid 1px rgb(0, 0, 0);
 
-    padding: 10px 0 10px 0;
-    height: 20px
+    padding: 1vh 0 1vh 0;
+    height: 2vh;
 }
 
 .main {
@@ -306,5 +327,10 @@ img {
 
 #about_main {
   // background-color: azure;
+  height: 92vh;
+}
+
+#contact_main {
+  height: 88vh;
 }
 

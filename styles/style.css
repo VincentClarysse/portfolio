@@ -31,6 +31,7 @@ body {
   z-index: 15;
   background-color: rgb(253, 253, 253);
   height: 8vh;
+  min-height: 8vh;
   grid-column: 1/13;
   display: grid;
   grid-template-columns: repeat(12, 1fr);
@@ -40,12 +41,24 @@ body {
 }
 
 #grad_hr {
-  border: 0;
   height: 1px;
-  width: 100vw;
+  position: absolute;
+  left: 0px;
+  top: 8vh;
+  background-color: black;
+  transition-duration: 350ms;
+  transform-origin: left;
+  transform-style: flat;
+}
+
+#right_hr {
   position: absolute;
   top: 8vh;
-  transform-style: smooth;
+  right: 0px;
+  width: 190px;
+  height: 1px;
+  background-color: black;
+  z-index: 30;
 }
 
 .header a {
@@ -77,20 +90,25 @@ body {
   z-index: 10;
 }
 
+.active {
+  border-bottom: solid 1px #fff8e4;
+  background-color: #fff8e4;
+  z-index: 10;
+}
+
 #section {
   font-family: BluuNext;
   font-size: 60pt;
   text-align: right;
-  grid-column: 6/12;
   position: absolute;
   top: 1.5vh;
-  right: 100px;
+  right: 200px;
   z-index: 20;
+  transition-duration: 350ms;
 }
 
 .hide {
-  opacity: 0;
-  transition-duration: 100ms;
+  transform: translateY(-200px);
 }
 
 .footer {
@@ -104,8 +122,8 @@ body {
   display: flex;
   justify-content: center;
   border-top: solid 1px rgb(0, 0, 0);
-  padding: 10px 0 10px 0;
-  height: 20px;
+  padding: 1vh 0 1vh 0;
+  height: 2vh;
 }
 
 .main {
@@ -245,4 +263,12 @@ img {
 .lil-nav__img:hover {
   transform: scale(1.02);
   z-index: 0;
+}
+
+#about_main {
+  height: 92vh;
+}
+
+#contact_main {
+  height: 88vh;
 }/*# sourceMappingURL=style.css.map */
