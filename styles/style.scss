@@ -124,6 +124,8 @@ body {
 .active {
   border-bottom: solid 1px $color1;
   background-color: $color1;
+  border-right: solid 1px black;
+
   z-index: 10;
 }
 

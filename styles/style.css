@@ -93,6 +93,7 @@ body {
 .active {
   border-bottom: solid 1px #fff8e4;
   background-color: #fff8e4;
+  border-right: solid 1px black;
   z-index: 10;
 }
 

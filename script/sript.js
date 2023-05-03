@@ -6,7 +6,23 @@ let lilnavs = document.getElementsByClassName("lil-nav-link");
 const section = document.getElementById("section");
 const grad_hr = document.getElementById("grad_hr");
 
-const carrousel_section = document.getElementById('carrousel_main')
+const navElements = document.querySelectorAll(".nav_item");
+console.log(navElements)
+
+// navElements[3].addEventListener("onmouseover", () => {
+//     navElements[3].style.borderRight="solid 1px black"
+//     console.log("mouse")
+// });
+
+for (let i = 0; i<navElements.length; i++) {
+    navElements[i].addEventListener("click", ()=>{
+
+    navElements.forEach(element => element.classList.remove("active"));
+    navElements[3].style.borderRight=""
+    navElements[i].classList.add("active");
+
+    if (i==3) {navElements[i].style.borderRight="solid 1px black"}})
+}
 
 function setSection(delay){
     if (section.innerHTML!=""){
@@ -18,26 +34,6 @@ function setSection(delay){
     },delay)
     }
 }
-
-// function setSection(delay){
-//     if (section.innerHTML!=""){
-//     setTimeout(()=>{
-//     let currentleft = (section.offsetLeft);
-//     let currentwidth = (section.clientWidth);
-
-//     grad_hr.style.background= "linear-gradient(to right, " 
-//     + "black "+ (currentleft-11)+"px"
-//     + ", " 
-//     + "transparent "+ (currentleft-10)+"px"
-//     + ", " 
-//     + "transparent "+ (currentleft+currentwidth+7)+"px"
-//     + ", " 
-//     + "black "+ (currentleft+currentwidth+8)+"px"
-//     + ")";
-//     },delay)
-//     }
-// }
-
 
 window.onload = (event) => {
     let image1_height = document.getElementById("image-1").offsetHeight;
@@ -94,11 +90,10 @@ const hide = (intersect) => {
         section.classList.add("hide");
         grad_hr.style.width= window.innerWidth-185+"PX";
         break;
-        // case "landing_main": if(section.innerHTML=="Projects"){
-        //     section.classList.add("hide");
-        //     grad_hr.style.width= window.innerWidth-185+"PX";
-        //     // grad_hr.style.background= "linear-gradient(to right,black, black)";
-        // };
+        case "landing_main": if(section.innerHTML=="Projects"){
+            section.classList.add("hide");
+            grad_hr.style.width= window.innerWidth-185+"PX";
+        };
     }
 }
 
@@ -130,7 +125,7 @@ const hide_observer = new IntersectionObserver(function (entries, observer)
 {
     for(let i =0; i < entries.length ; i++) {
         if(entries[i].isIntersecting) {
-            console.log("hide "+entries[i].target.id)
+            // console.log("hide "+entries[i].target.id)
             hide(entries[i].target.id)
             }
     }
@@ -143,7 +138,7 @@ const show_observer = new IntersectionObserver(function (entries, observer)
 {
     for(let i =0; i < entries.length ; i++) {
         if(entries[i].isIntersecting) {
-            console.log("show "+entries[i].target.id)
+            // console.log("show "+entries[i].target.id)
             show(entries[i].target.id)
             }
     }
