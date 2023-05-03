@@ -5,6 +5,7 @@ let projectdivs = document.getElementsByClassName("projectdiv");
 let lilnavs = document.getElementsByClassName("lil-nav-link");
 const section = document.getElementById("section");
 const grad_hr = document.getElementById("grad_hr");
+const the_animation = document.querySelectorAll('.main');
 
 const navElements = document.querySelectorAll(".nav_item");
 console.log(navElements)
@@ -14,15 +15,7 @@ console.log(navElements)
 //     console.log("mouse")
 // });
 
-for (let i = 0; i<navElements.length; i++) {
-    navElements[i].addEventListener("click", ()=>{
 
-    navElements.forEach(element => element.classList.remove("active"));
-    navElements[3].style.borderRight=""
-    navElements[i].classList.add("active");
-
-    if (i==3) {navElements[i].style.borderRight="solid 1px black"}})
-}
 
 function setSection(delay){
     if (section.innerHTML!=""){
@@ -108,6 +101,23 @@ const changesection = (newTitle) => {
     // }, 500);
 }
 
+const setnav = (i) => {
+    // navElements.forEach(element => element.classList.remove("active"));
+    for (let x = 0; x < navElements.length; x++) {
+        if (x == i) {
+            console.log("equal")
+        }
+        else{
+            navElements[x].classList.remove("active");
+        }
+    }
+    // navElements.forEach(element => element.style.transitionDelay="0ms");
+    navElements[3].style.borderRight=""
+    navElements[i].classList.add("active");
+
+    if (i==3) {navElements[i].style.borderRight="solid 1px black"}
+}
+
 const show = (intersect) => {
     switch (intersect) {
         case "landing_main": changesection("Portfolio");
@@ -147,11 +157,48 @@ const show_observer = new IntersectionObserver(function (entries, observer)
         threshold: 0.95
 });
 
-const the_animation = document.querySelectorAll('.main');
+const nav_observer = new IntersectionObserver(function (entries, observer) 
+{
+    for(let i =0; i < entries.length ; i++) {
+        if(entries[i].isIntersecting) {
+            console.log("show nav of "+entries[i].target.id)
+            setnav(i);
+            }
+    }
+    }
+    ,{
+        threshold: 0.6
+});
+
+
 
 for (let i = 0; i < the_animation.length; i++) {
     const elements = the_animation[i];
 
  hide_observer.observe(elements);
  show_observer.observe(elements);
+ nav_observer.observe(elements);
+}
+
+for (let i = 0; i<navElements.length; i++) {
+    navElements[i].addEventListener("click", ()=>{
+   
+    navElements.forEach(element => element.classList.remove("active"));
+    navElements[3].style.borderRight=""
+    navElements[i].classList.add("active");
+
+    if (i==3) {navElements[i].style.borderRight="solid 1px black"}
+
+    // for (let i = 0; i < the_animation.length; i++) {
+    //     const elements = the_animation[i];
+    
+    //  hide_observer.unobserve(elements);
+    //  show_observer.unobserve(elements);
+    //  setTimeout(() => {
+    //     hide_observer.observe(elements);
+    //     show_observer.observe(elements);
+    //     console.log("done")
+    //  }, 1000);
+    // }
+})
 }
