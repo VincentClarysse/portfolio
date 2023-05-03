@@ -6,9 +6,7 @@ let lilnavs = document.getElementsByClassName("lil-nav-link");
 const section = document.getElementById("section");
 const grad_hr = document.getElementById("grad_hr");
 const the_animation = document.querySelectorAll('.main');
-
 const navElements = document.querySelectorAll(".nav_item");
-console.log(navElements)
 
 // navElements[3].addEventListener("onmouseover", () => {
 //     navElements[3].style.borderRight="solid 1px black"
@@ -101,21 +99,27 @@ const changesection = (newTitle) => {
     // }, 500);
 }
 
-const setnav = (i) => {
-    // navElements.forEach(element => element.classList.remove("active"));
-    for (let x = 0; x < navElements.length; x++) {
-        if (x == i) {
-            console.log("equal")
-        }
-        else{
-            navElements[x].classList.remove("active");
-        }
-    }
-    // navElements.forEach(element => element.style.transitionDelay="0ms");
-    navElements[3].style.borderRight=""
-    navElements[i].classList.add("active");
+const setnav = (i,main) => {
 
-    if (i==3) {navElements[i].style.borderRight="solid 1px black"}
+    navElements[3].style.borderRight=""
+    navElements.forEach(element => {
+    element.classList.remove("active")
+            console.log("removed")
+        });    
+
+    switch (main) {
+        case "landing_main": navElements[0].classList.add("active");
+        break;
+        case "carrousel_main": navElements[1].classList.add("active");
+        break;
+        case "about_main": navElements[2].classList.add("active");
+        break;
+        case "contact_main": navElements[3].classList.add("active")
+        navElements[3].style.borderRight="solid 1px black"
+        break;
+    }
+
+    console.log(i)
 }
 
 const show = (intersect) => {
@@ -162,7 +166,7 @@ const nav_observer = new IntersectionObserver(function (entries, observer)
     for(let i =0; i < entries.length ; i++) {
         if(entries[i].isIntersecting) {
             console.log("show nav of "+entries[i].target.id)
-            setnav(i);
+            setnav(i,entries[i].target.id);
             }
     }
     }
@@ -189,16 +193,14 @@ for (let i = 0; i<navElements.length; i++) {
 
     if (i==3) {navElements[i].style.borderRight="solid 1px black"}
 
-    // for (let i = 0; i < the_animation.length; i++) {
-    //     const elements = the_animation[i];
+    for (let i = 0; i < the_animation.length; i++) {
+        const elements = the_animation[i];
     
-    //  hide_observer.unobserve(elements);
-    //  show_observer.unobserve(elements);
-    //  setTimeout(() => {
-    //     hide_observer.observe(elements);
-    //     show_observer.observe(elements);
-    //     console.log("done")
-    //  }, 1000);
-    // }
+     nav_observer.unobserve(elements);
+     setTimeout(() => {
+        nav_observer.observe(elements);
+        console.log("done")
+     }, 1000);
+    }
 })
 }
