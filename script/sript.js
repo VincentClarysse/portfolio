@@ -47,7 +47,7 @@ window.addEventListener("resize", (event) => {
         galleryarray[i].style.maxHeight= "none";
         // galleryarray[i].style.maxHeight= galleryarray[i].style.height;
     }
-    setSection(0);
+    setSection(50);
 });
 
 for(let i=0; i<lilnavs.length; i++) {
@@ -228,7 +228,7 @@ const onScrollStop = callback => {
         clearTimeout(isScrolling);
         isScrolling = setTimeout(() => {
           callback();
-        }, 300);
+        }, 200);
       },
       false
     );

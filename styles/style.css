@@ -101,7 +101,7 @@ body {
 
 #section {
   font-family: BluuNext;
-  font-size: 60pt;
+  font-size: 10vh;
   text-align: right;
   position: absolute;
   top: 1.5vh;
@@ -172,9 +172,12 @@ body {
   grid-template-rows: auto;
   height: 92vh;
   align-items: center;
+  -moz-column-gap: 10px;
+       column-gap: 10px;
 }
 
 .projectsection {
+  scroll-padding-top: -50px;
   grid-column: 10/13;
   overflow-y: hidden;
   -ms-overflow-style: none; /* IE and Edge */
@@ -186,7 +189,7 @@ body {
 }
 
 .projectdiv {
-  padding: 0 40px 0 20px;
+  padding: 0 40px 0 5px;
   overflow-y: scroll;
 }
 
@@ -251,7 +254,6 @@ img {
 .lil-nav a {
   display: flex;
   margin-bottom: 10px;
-  margin-right: 10px;
 }
 
 .lil-nav a:last-child {
