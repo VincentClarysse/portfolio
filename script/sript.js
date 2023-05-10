@@ -5,8 +5,8 @@ let projectdivs = document.getElementsByClassName("projectdiv");
 let lilnavs = document.getElementsByClassName("lil-nav-link");
 const section = document.getElementById("section");
 const grad_hr = document.getElementById("grad_hr");
-const the_animation = document.querySelectorAll('.main');
 const navElements = document.querySelectorAll(".nav_item");
+const elements = document.querySelectorAll('.main');
 
 function setSection(delay){
     if (section.innerHTML!=""){
@@ -127,14 +127,30 @@ const show = (intersect) => {
     }
 }
 
+for (let i = 0; i<navElements.length; i++) { //nav scrolls
+    navElements[i].addEventListener("click", ()=>{
+   
+    navElements.forEach(element => element.classList.remove("active"));
+    navElements[3].style.borderRight=""
+    navElements[i].classList.add("active");
+
+    if (i==3) {navElements[i].style.borderRight="solid 1px black"}
+
+    for (let i = 0; i < elements.length; i++) {
+    
+     nav_observer.unobserve(elements[i]);
+     setTimeout(() => {
+        nav_observer.observe(elements[i]);
+     }, 1000);
+    }
+})
+}
+
 const hide_observer = new IntersectionObserver(function (entries, observer) 
 {
     for(let i =0; i < entries.length ; i++) {
         if(entries[i].isIntersecting) {
-            // console.log("hide "+entries[i].target.id)
-            
             hide(entries[i].target.id)
-            // console.log("hide")
             }
     }
     }
@@ -146,7 +162,6 @@ const show_observer = new IntersectionObserver(function (entries, observer)
 {
     for(let i =0; i < entries.length ; i++) {
         if(entries[i].isIntersecting) {
-            // console.log("show "+entries[i].target.id)
             show(entries[i].target.id)
             }
     }
@@ -159,7 +174,6 @@ const nav_observer = new IntersectionObserver(function (entries, observer)
 {
     for(let i =0; i < entries.length ; i++) {
         if(entries[i].isIntersecting) {
-            // console.log("show nav of "+entries[i].target.id)
             setnav(i,entries[i].target.id);
             }
     }
@@ -168,55 +182,25 @@ const nav_observer = new IntersectionObserver(function (entries, observer)
         threshold: 0.6
 });
 
-
-
-for (let i = 0; i < the_animation.length; i++) {
-    const elements = the_animation[i];
-
- hide_observer.observe(elements);
- show_observer.observe(elements);
- nav_observer.observe(elements);
-}
-
-for (let i = 0; i<navElements.length; i++) { //nav scrolls
-    navElements[i].addEventListener("click", ()=>{
-   
-    navElements.forEach(element => element.classList.remove("active"));
-    navElements[3].style.borderRight=""
-    navElements[i].classList.add("active");
-
-    if (i==3) {navElements[i].style.borderRight="solid 1px black"}
-
-
-
-    for (let i = 0; i < the_animation.length; i++) {
-        const elements = the_animation[i];
-    
-     nav_observer.unobserve(elements);
-     setTimeout(() => {
-        nav_observer.observe(elements);
-     }, 1000);
-    }
-})
+for (let i = 0; i < elements.length; i++) {
+    hide_observer.observe(elements[i]);
+    show_observer.observe(elements[i]);
+    nav_observer.observe(elements[i]);
 }
 
 const showstop=()=>{
-    for (let i = 0; i < the_animation.length; i++) {
-        const elements = the_animation[i];
-
-    show_observer.unobserve(elements);
+    for (let i = 0; i < elements.length; i++) {
+    show_observer.unobserve(elements[i]);
     setTimeout(() => {
-       show_observer.observe(elements);
+       show_observer.observe(elements[i]);
     //    console.log("done")
     }, 600);
 }
 }
 
 window.addEventListener("scroll", ()=>{
-    for (let i = 0; i < the_animation.length; i++) {
-        const elements = the_animation[i];
-
-    show_observer.unobserve(elements);
+for (let i = 0; i < elements.length; i++) {
+    show_observer.unobserve(elements[i]);
     }
 })
 
@@ -235,11 +219,8 @@ const onScrollStop = callback => {
   };
 
 onScrollStop(() => {
-    console.log('The user has stopped scrolling');
 
-    for (let i = 0; i < the_animation.length; i++) {
-        const elements = the_animation[i];
-
-    show_observer.observe(elements);
+for (let i = 0; i < elements.length; i++) {
+    show_observer.observe(elements[i]);
     }
-  });
+});
