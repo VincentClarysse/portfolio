@@ -8,15 +8,9 @@ const grad_hr = document.getElementById("grad_hr");
 const the_animation = document.querySelectorAll('.main');
 const navElements = document.querySelectorAll(".nav_item");
 
-// navElements[3].addEventListener("onmouseover", () => {
-//     navElements[3].style.borderRight="solid 1px black"
-//     console.log("mouse")
-// });
-
-
-
 function setSection(delay){
     if (section.innerHTML!=""){
+    
     setTimeout(()=>{
     let currentleft = (section.offsetLeft);
     let currentwidth = (section.clientWidth);
@@ -74,29 +68,30 @@ for(let i=0; i<lilnavs.length; i++) {
 }
 
 const hide = (intersect) => {
-    section.style.transitionDelay="0ms"
-    grad_hr.style.transitionDelay="400ms"
-    switch (intersect) {
-        default:
+
+    if (window.scrollY===0) {
+        return
+        }
+    else {
+        section.style.transitionDelay="0ms"
+        grad_hr.style.transitionDelay="200ms"
+
         section.classList.add("hide");
-        grad_hr.style.width= window.innerWidth-185+"PX";
-        break;
-        case "landing_main": if(section.innerHTML=="Projects"){
-            section.classList.add("hide");
-            grad_hr.style.width= window.innerWidth-185+"PX";
-        };
+        grad_hr.style.width= window.innerWidth-190+"PX";        
+        showstop();
     }
 }
 
 const changesection = (newTitle) => {
-    // setTimeout(() => {
-        section.style.transitionDelay="450ms"
-        grad_hr.style.transitionDelay="250ms"
 
+        section.style.transitionDelay="200ms"
+        grad_hr.style.transitionDelay="0ms"
+        
         section.innerHTML=newTitle;
+        grad_hr.style.width= section.offsetLeft-10+"px"
+
+
         section.classList.remove('hide');
-        setSection(0);
-    // }, 500);
 }
 
 const setnav = (i,main) => {
@@ -104,7 +99,6 @@ const setnav = (i,main) => {
     navElements[3].style.borderRight=""
     navElements.forEach(element => {
     element.classList.remove("active")
-            console.log("removed")
         });    
 
     switch (main) {
@@ -118,15 +112,13 @@ const setnav = (i,main) => {
         navElements[3].style.borderRight="solid 1px black"
         break;
     }
-
-    console.log(i)
 }
 
 const show = (intersect) => {
     switch (intersect) {
         case "landing_main": changesection("Portfolio");
         break;
-        case "carrousel_main": changesection("Projects");
+        case "carrousel_main": changesection("My Work");
         break;
         case "about_main": changesection("About Me");
         break;
@@ -140,7 +132,9 @@ const hide_observer = new IntersectionObserver(function (entries, observer)
     for(let i =0; i < entries.length ; i++) {
         if(entries[i].isIntersecting) {
             // console.log("hide "+entries[i].target.id)
+            
             hide(entries[i].target.id)
+            // console.log("hide")
             }
     }
     }
@@ -165,7 +159,7 @@ const nav_observer = new IntersectionObserver(function (entries, observer)
 {
     for(let i =0; i < entries.length ; i++) {
         if(entries[i].isIntersecting) {
-            console.log("show nav of "+entries[i].target.id)
+            // console.log("show nav of "+entries[i].target.id)
             setnav(i,entries[i].target.id);
             }
     }
@@ -184,7 +178,7 @@ for (let i = 0; i < the_animation.length; i++) {
  nav_observer.observe(elements);
 }
 
-for (let i = 0; i<navElements.length; i++) {
+for (let i = 0; i<navElements.length; i++) { //nav scrolls
     navElements[i].addEventListener("click", ()=>{
    
     navElements.forEach(element => element.classList.remove("active"));
@@ -193,14 +187,59 @@ for (let i = 0; i<navElements.length; i++) {
 
     if (i==3) {navElements[i].style.borderRight="solid 1px black"}
 
+
+
     for (let i = 0; i < the_animation.length; i++) {
         const elements = the_animation[i];
     
      nav_observer.unobserve(elements);
      setTimeout(() => {
-        observer.observe(elements);
-        console.log("done")
+        nav_observer.observe(elements);
      }, 1000);
     }
 })
 }
+
+const showstop=()=>{
+    for (let i = 0; i < the_animation.length; i++) {
+        const elements = the_animation[i];
+
+    show_observer.unobserve(elements);
+    setTimeout(() => {
+       show_observer.observe(elements);
+    //    console.log("done")
+    }, 600);
+}
+}
+
+window.addEventListener("scroll", ()=>{
+    for (let i = 0; i < the_animation.length; i++) {
+        const elements = the_animation[i];
+
+    show_observer.unobserve(elements);
+    }
+})
+
+const onScrollStop = callback => {
+    let isScrolling;
+    window.addEventListener(
+      'scroll',
+      e => {
+        clearTimeout(isScrolling);
+        isScrolling = setTimeout(() => {
+          callback();
+        }, 300);
+      },
+      false
+    );
+  };
+
+onScrollStop(() => {
+    console.log('The user has stopped scrolling');
+
+    for (let i = 0; i < the_animation.length; i++) {
+        const elements = the_animation[i];
+
+    show_observer.observe(elements);
+    }
+  });
