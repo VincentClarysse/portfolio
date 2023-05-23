@@ -8,6 +8,8 @@ const grad_hr = document.getElementById("grad_hr");
 const navElements = document.querySelectorAll(".nav_item");
 const elements = document.querySelectorAll('.main');
 
+let navpush = false;
+
 function setSection(delay){
     if (section.innerHTML!=""){
     
@@ -74,7 +76,17 @@ const hide = (intersect) => {
         }
     else {
         section.style.transitionDelay="0ms"
+
+        if (navpush===true){
+            grad_hr.style.transitionDelay="1000ms"
+            setTimeout(() => {
+                navpush = false;
+            }, 1000);
+        }
+
+        else {
         grad_hr.style.transitionDelay="200ms"
+        }
 
         section.classList.add("hide");
         grad_hr.style.width= window.innerWidth-190+"PX";        
@@ -129,7 +141,8 @@ const show = (intersect) => {
 
 for (let i = 0; i<navElements.length; i++) { //nav scrolls
     navElements[i].addEventListener("click", ()=>{
-   
+    navpush = true;
+    console.log(navpush);
     navElements.forEach(element => element.classList.remove("active"));
     navElements[3].style.borderRight=""
     navElements[i].classList.add("active");
