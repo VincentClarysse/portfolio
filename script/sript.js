@@ -78,10 +78,10 @@ const hide = (intersect) => {
         section.style.transitionDelay="0ms"
 
         if (navpush===true){
-            grad_hr.style.transitionDelay="1000ms"
+            grad_hr.style.transitionDelay="1200ms"
             setTimeout(() => {
                 navpush = false;
-            }, 1000);
+            }, 1200);
         }
 
         else {
@@ -96,7 +96,7 @@ const hide = (intersect) => {
 
 const changesection = (newTitle) => {
 
-        section.style.transitionDelay="200ms"
+        section.style.transitionDelay="300ms"
         grad_hr.style.transitionDelay="0ms"
         
         section.innerHTML=newTitle;
@@ -108,7 +108,7 @@ const changesection = (newTitle) => {
 
 const setnav = (i,main) => {
 
-    navElements[3].style.borderRight=""
+    navElements[2].style.borderRight=""
     navElements.forEach(element => {
     element.classList.remove("active")
         });    
@@ -119,6 +119,7 @@ const setnav = (i,main) => {
         case "carrousel_main": navElements[1].classList.add("active");
         break;
         case "about_main": navElements[2].classList.add("active");
+        navElements[2].style.borderRight="solid 1px black"
         break;
         case "contact_main": navElements[3].classList.add("active")
         navElements[3].style.borderRight="solid 1px black"
@@ -143,11 +144,13 @@ for (let i = 0; i<navElements.length; i++) { //nav scrolls
     navElements[i].addEventListener("click", ()=>{
     navpush = true;
     console.log(navpush);
-    navElements.forEach(element => element.classList.remove("active"));
-    navElements[3].style.borderRight=""
-    navElements[i].classList.add("active");
 
-    if (i==3) {navElements[i].style.borderRight="solid 1px black"}
+    if (i=!3){
+    navElements.forEach(element => element.classList.remove("active"));
+    navElements[2].style.borderRight=""
+    navElements[i].classList.add("active");
+    }
+    if (i==2) {navElements[i].style.borderRight="solid 1px black"}
 
     for (let i = 0; i < elements.length; i++) {
     
@@ -237,3 +240,15 @@ for (let i = 0; i < elements.length; i++) {
     show_observer.observe(elements[i]);
     }
 });
+
+// function myFunction(x) {
+//     if (x.matches) { // If media query matches
+//       document.body.style.backgroundColor = "yellow";
+//     } else {
+//       document.body.style.backgroundColor = "pink";
+//     }
+//   }
+  
+//   const x = window.matchMedia("(max-width: 700px)")
+//   myFunction(x) // Call listener function at run time
+//   x.addListener(myFunction) // Attach listener function on state changes
