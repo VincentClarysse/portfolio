@@ -143,9 +143,8 @@ const show = (intersect) => {
 for (let i = 0; i<navElements.length; i++) { //nav scrolls
     navElements[i].addEventListener("click", ()=>{
     navpush = true;
-    console.log(navpush);
 
-    if (i=!3){
+    if (i!==3){
     navElements.forEach(element => element.classList.remove("active"));
     navElements[2].style.borderRight=""
     navElements[i].classList.add("active");
