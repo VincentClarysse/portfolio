@@ -148,16 +148,16 @@ for (let i = 0; i<navElements.length; i++) { //nav scrolls
     navElements.forEach(element => element.classList.remove("active"));
     navElements[2].style.borderRight=""
     navElements[i].classList.add("active");
-    }
-    if (i==2) {navElements[i].style.borderRight="solid 1px black"}
 
     for (let i = 0; i < elements.length; i++) {
     
-     nav_observer.unobserve(elements[i]);
-     setTimeout(() => {
-        nav_observer.observe(elements[i]);
-     }, 1000);
+        nav_observer.unobserve(elements[i]);
+        setTimeout(() => {
+           nav_observer.observe(elements[i]);
+        }, 1000);
+       }
     }
+    if (i==2) {navElements[i].style.borderRight="solid 1px black"}
 })
 }
 

@@ -223,7 +223,7 @@ body {
   justify-self: center;
   transition-timing-function: ease-in-out;
   transition-duration: 200ms;
-  width: 80%;
+  width: 70%;
   overflow: hidden;
 
   display: flex;
@@ -304,6 +304,7 @@ img {
 //   height: 540px;
   width: 100%;
   grid-column: 4/10;
+  // border: solid 1px black;
 }
 
 .gallery::-webkit-scrollbar { //chrome opera safari
@@ -331,6 +332,7 @@ img {
 
   -ms-overflow-style: none;  /* IE and Edge */
   scrollbar-width: none;  /* Firefox */
+  // background-image: linear-gradient(rgba(255, 255, 255, 0.5), transparent 20%, transparent 80%, rgba(0, 0, 0, 0.6));
 }
 
 .lil-nav::-webkit-scrollbar { //chrome opera safari
@@ -350,6 +352,7 @@ img {
 .lil-nav__img {
   object-fit: cover;
   transition: 0.3s ease all;
+  z-index: -10;
 }
 
 .lil-nav__img:hover {

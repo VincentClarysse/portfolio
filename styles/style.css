@@ -177,7 +177,7 @@ body {
   justify-self: center;
   transition-timing-function: ease-in-out;
   transition-duration: 200ms;
-  width: 80%;
+  width: 70%;
   overflow: hidden;
   display: flex;
   justify-content: center;
@@ -288,6 +288,7 @@ img {
   -o-object-fit: cover;
      object-fit: cover;
   transition: 0.3s ease all;
+  z-index: -10;
 }
 
 .lil-nav__img:hover {
