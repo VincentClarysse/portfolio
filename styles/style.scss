@@ -360,21 +360,77 @@ img {
   z-index: 0;
 }
 
-#my-photo {
+#my_photo {
   grid-row: 1;
-  grid-column: 7/13;
-  height: 500px;
-  background-color: red;
-  align-self: center;
+  grid-column: 9/13;
+  height: fit-content;
+  width: fit-content;
+  background-color: transparent;
+  margin-top: 6em;
+  overflow: hidden;
+
+  img {
+    object-fit: cover;
+    height: 70vh;
+    // transform: translate(0px, -50px);
+  }
+}
+
+#about_me::-webkit-scrollbar { //chrome opera safari
+  display: none;
 }
 
 #about_me {
   grid-row: 1;
-  grid-column: 2/7;
-  align-self: center;
-  // text-align: center;
-  background-color: green;
-  height: 500px;
+  grid-column: 2/8;
+  // background-color: green;
+  height: 70vh;
+  margin-top: 5em;
+  display: grid;
+  // grid-template-columns: repeat(6, 1fr);
+  align-content: space-between;
+  padding-top: 1em;
+
+  overflow-y: scroll;
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+
+  .subtitle {
+    font-weight: bold;
+    font-size: 48pt;
+    font-family: BluuNext;
+  }
+
+  p {
+    font-family: dinish;
+    font-size: 14pt;
+    line-height: 18pt;
+  }
+
+  #intro {
+    text-align: left;
+    grid-column: 1/6;
+    margin-bottom: 2em;
+  }
+
+  #work {
+    text-align: right;
+    grid-column: 2/7;
+    margin-bottom: 2em;
+  }
+
+  #contact {
+    text-align: left;
+    grid-column: 1/6;
+  }
+
+    span {
+      font-weight: bold;
+    }
+    #bob {
+      font-weight: 500;
+      font-style: italic;
+    }
 }
 
 #about_main {

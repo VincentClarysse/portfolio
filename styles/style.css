@@ -296,20 +296,69 @@ img {
   z-index: 0;
 }
 
-#my-photo {
+#my_photo {
   grid-row: 1;
-  grid-column: 7/13;
-  height: 500px;
-  background-color: red;
-  align-self: center;
+  grid-column: 9/13;
+  height: -moz-fit-content;
+  height: fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  background-color: transparent;
+  margin-top: 6em;
+  overflow: hidden;
+}
+#my_photo img {
+  -o-object-fit: cover;
+     object-fit: cover;
+  height: 70vh;
+}
+
+#about_me::-webkit-scrollbar {
+  display: none;
 }
 
 #about_me {
   grid-row: 1;
+  grid-column: 2/8;
+  height: 70vh;
+  margin-top: 5em;
+  display: grid;
+  align-content: space-between;
+  padding-top: 1em;
+  overflow-y: scroll;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+#about_me .subtitle {
+  font-weight: bold;
+  font-size: 48pt;
+  font-family: BluuNext;
+}
+#about_me p {
+  font-family: dinish;
+  font-size: 14pt;
+  line-height: 18pt;
+}
+#about_me #intro {
+  text-align: left;
+  grid-column: 1/6;
+  margin-bottom: 2em;
+}
+#about_me #work {
+  text-align: right;
   grid-column: 2/7;
-  align-self: center;
-  background-color: green;
-  height: 500px;
+  margin-bottom: 2em;
+}
+#about_me #contact {
+  text-align: left;
+  grid-column: 1/6;
+}
+#about_me span {
+  font-weight: bold;
+}
+#about_me #bob {
+  font-weight: 500;
+  font-style: italic;
 }
 
 #about_main {
