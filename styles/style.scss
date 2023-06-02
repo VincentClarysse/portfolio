@@ -18,6 +18,7 @@
 
 $color1: rgb(255, 248, 229);
 $color2: rgb(253, 253, 253);
+$linkcolor: rgb(50, 85, 180);
 
 * {
     margin: 0;
@@ -277,7 +278,7 @@ body {
 .projectdiv h2 {
     font-family: BluuNext;
     font-size: 25pt;
-    padding-bottom: 10pt;
+    margin-bottom: 1rem;
 }
 
 .projectdiv p {
@@ -287,6 +288,18 @@ body {
 
 
     overflow-y: hidden
+}
+
+.projectlinks {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+
+.projectlinks a {
+  color: $linkcolor;
+  text-decoration: none;
+  font-family: dinish;
 }
 
 img {
@@ -422,6 +435,11 @@ img {
   #contact {
     text-align: left;
     grid-column: 1/6;
+  }
+
+  #contact a {
+    color: $linkcolor;
+    text-decoration: none;
   }
 
     span {

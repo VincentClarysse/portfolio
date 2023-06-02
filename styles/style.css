@@ -224,7 +224,7 @@ body {
 .projectdiv h2 {
   font-family: BluuNext;
   font-size: 25pt;
-  padding-bottom: 10pt;
+  margin-bottom: 1rem;
 }
 
 .projectdiv p {
@@ -232,6 +232,18 @@ body {
   font-size: 12pt;
   text-align: justify;
   overflow-y: hidden;
+}
+
+.projectlinks {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+
+.projectlinks a {
+  color: rgb(50, 85, 180);
+  text-decoration: none;
+  font-family: dinish;
 }
 
 img {
@@ -352,6 +364,10 @@ img {
 #about_me #contact {
   text-align: left;
   grid-column: 1/6;
+}
+#about_me #contact a {
+  color: rgb(50, 85, 180);
+  text-decoration: none;
 }
 #about_me span {
   font-weight: bold;
