@@ -1,8 +1,8 @@
-let gallery = document.getElementById("gallery");
-let lilnav = document.querySelector(".lil-nav");
-let projectsection = document.querySelector(".projectsection");
-let projectdivs = document.getElementsByClassName("projectdiv");
-let lilnavs = document.getElementsByClassName("lil-nav-link");
+const gallery = document.getElementById("gallery");
+const lilnav = document.querySelector(".lil-nav");
+const projectsection = document.querySelector(".projectsection");
+const projectdivs = document.getElementsByClassName("projectdiv");
+const lilnavs = document.getElementsByClassName("lil-nav-link");
 const section = document.getElementById("section");
 const grad_hr = document.getElementById("grad_hr");
 const navElements = document.querySelectorAll(".nav_item");
@@ -61,7 +61,6 @@ for(let i=0; i<lilnavs.length; i++) {
             behavior: "smooth",
           });
 
-        gallery_topheight = 
         gallery.scrollTo({
         top: topheight + (10*i),
         behavior: "smooth",

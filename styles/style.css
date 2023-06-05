@@ -274,17 +274,31 @@ img {
   aspect-ratio: 1.75925;
 }
 
+/* width */
+.lil-nav::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+.lil-nav::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Handle */
+.lil-nav::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 100px;
+}
+
+/* Handle on hover */
+.lil-nav::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.3);
+}
+
 .lil-nav {
   justify-self: center;
   overflow-y: scroll;
-  overflow-x: hidden;
   grid-column: 2/4;
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
-}
-
-.lil-nav::-webkit-scrollbar {
-  display: none;
 }
 
 .lil-nav a {

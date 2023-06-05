@@ -15,7 +15,6 @@
          url("/fonts/Dinish-Regular.otf") format('svg');               /* Legacy iOS */
 }
 
-
 $color1: rgb(255, 248, 229);
 $color2: rgb(253, 253, 253);
 $linkcolor: rgb(50, 85, 180);
@@ -248,8 +247,6 @@ body {
     column-gap: 10px;
 }
 
-
-
 .projectsection {
   scroll-padding-top: -50px;
   grid-column: 10/13;
@@ -336,20 +333,32 @@ img {
   aspect-ratio: 1.75925;
 }
 
+  /* width */
+  .lil-nav::-webkit-scrollbar {
+    width: 5px;
+  }
+
+  /* Track */
+  .lil-nav::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  
+  /* Handle */
+  .lil-nav::-webkit-scrollbar-thumb {
+    background: rgb(0, 0, 0 ,0.2);
+    border-radius: 100px;
+  }
+
+  /* Handle on hover */
+  .lil-nav::-webkit-scrollbar-thumb:hover {
+    background: rgb(0, 0, 0 ,0.3);
+  }
+
 .lil-nav {
   justify-self: center;
   overflow-y: scroll;
-  overflow-x: hidden;
-
+  // overflow-x: hidden;
   grid-column: 2/4;
-
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;  /* Firefox */
-  // background-image: linear-gradient(rgba(255, 255, 255, 0.5), transparent 20%, transparent 80%, rgba(0, 0, 0, 0.6));
-}
-
-.lil-nav::-webkit-scrollbar { //chrome opera safari
-  display: none;
 }
 
 .lil-nav a {
