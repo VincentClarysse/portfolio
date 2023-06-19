@@ -408,32 +408,22 @@ img {
 }
 
 @media only screen and (max-width: 960px) {
-  .container {
-    display: none;
-  }
-  .mobile_container {
-    display: flex;
-  }
-  .mobile_container p {
-    font-size: 16pt;
-  }
   .main {
     width: 100vw;
     overflow: hidden;
   }
   #section {
-    width: 100vw;
+    background-color: red;
     font-size: 40pt;
     top: 20px;
     font-family: BluuNext;
     text-align: center;
     position: absolute;
-    right: auto;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
   }
   .header a {
     display: none;
-  }
-  #right_hr {
-    width: 0px;
   }
 }/*# sourceMappingURL=style.css.map */

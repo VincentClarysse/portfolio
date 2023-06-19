@@ -5,6 +5,7 @@ const projectdivs = document.getElementsByClassName("projectdiv");
 const lilnavs = document.getElementsByClassName("lil-nav-link");
 const section = document.getElementById("section");
 const grad_hr = document.getElementById("grad_hr");
+const right_hr = document.getElementById("right_hr");
 const navElements = document.querySelectorAll(".nav_item");
 const elements = document.querySelectorAll('.main');
 
@@ -16,13 +17,14 @@ function setSection(delay){
     setTimeout(()=>{
     let currentleft = (section.offsetLeft);
     let currentwidth = (section.clientWidth);
-
     grad_hr.style.width= section.offsetLeft-10+"px"
+    console.log(grad_hr.style.width);
     },delay)
     }
 }
 
 window.onload = (event) => {
+    grad_hr.style.width="0px"
     let image1_height = document.getElementById("image-1").offsetHeight;
     gallery.style.height= image1_height + "px";
     lilnav.style.height= image1_height + "px";
@@ -31,7 +33,7 @@ window.onload = (event) => {
     }
     projectsection.style.height= image1_height + "px";
 
-    setSection(0);
+    setSection(250);
 };
 
 window.addEventListener("resize", (event) => {
@@ -49,7 +51,7 @@ window.addEventListener("resize", (event) => {
         galleryarray[i].style.maxHeight= "none";
         // galleryarray[i].style.maxHeight= galleryarray[i].style.height;
     }
-    setSection(50);
+    setSection(250);
 });
 
 for(let i=0; i<lilnavs.length; i++) {
@@ -238,15 +240,3 @@ for (let i = 0; i < elements.length; i++) {
     show_observer.observe(elements[i]);
     }
 });
-
-// function myFunction(x) {
-//     if (x.matches) { // If media query matches
-//       document.body.style.backgroundColor = "yellow";
-//     } else {
-//       document.body.style.backgroundColor = "pink";
-//     }
-//   }
-  
-//   const x = window.matchMedia("(max-width: 700px)")
-//   myFunction(x) // Call listener function at run time
-//   x.addListener(myFunction) // Attach listener function on state changes
