@@ -202,13 +202,7 @@ body {
 .projectsection {
   scroll-padding-top: -50px;
   grid-column: 10/13;
-  overflow-y: hidden;
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
-}
-
-.projectsection::-webkit-scrollbar {
-  display: none;
+  overflow-y: scroll;
 }
 
 .projectdiv {
@@ -407,6 +401,15 @@ img {
 }
 
 @media only screen and (max-width: 960px) {
+  .container {
+    display: none;
+  }
+  .mobile_container {
+    display: flex;
+  }
+  .mobile_container p {
+    font-size: 16pt;
+  }
   #section {
     font-size: 48pt;
     top: 16px;

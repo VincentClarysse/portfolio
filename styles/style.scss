@@ -249,15 +249,15 @@ body {
   scroll-padding-top: -50px;
   grid-column: 10/13;
   // grid-row: 2/3;
-  overflow-y: hidden;
+  overflow-y: scroll;
 
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
+  // -ms-overflow-style: none; /* IE and Edge */
+  // scrollbar-width: none; /* Firefox */
 }
 
 .projectsection::-webkit-scrollbar {
   //chrome opera safari
-  display: none;
+  // display: none;
 }
 
 .projectdiv {
@@ -479,16 +479,16 @@ img {
 }
 
 @media only screen and (max-width: 960px) {
-  // .container {
-  //   display: none;
-  // }
+  .container {
+    display: none;
+  }
 
-  // .mobile_container {
-  //   display: flex;
-  //   p {
-  //     font-size: 16pt;
-  //   }
-  // }
+  .mobile_container {
+    display: flex;
+    p {
+      font-size: 16pt;
+    }
+  }
 
   #section {
     // background-color: red;
