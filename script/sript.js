@@ -263,10 +263,10 @@ onScrollStop(() => {
 });
 
 if (window.innerWidth < 960) {
-  gallery.addEventListener("scroll", (e) => {
-    let scroll_ratio = gallery.scrollTop / gallery.scrollHeight;
-    projectsection.scrollTo({
-      top: scroll_ratio * projectsection.scrollHeight,
+  projectsection.addEventListener("scroll", (e) => {
+    let scroll_ratio = projectsection.scrollTop / projectsection.scrollHeight;
+    gallery.scrollTo({
+      top: scroll_ratio * gallery.scrollHeight,
       behavior: "smooth",
     });
   });
