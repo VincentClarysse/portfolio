@@ -40,6 +40,16 @@ window.onload = (event) => {
     }
   }
   setSection(50);
+
+  lazyload();
+};
+
+const lazyload = () => {
+  const imgs = document.querySelectorAll("img");
+  console.log(imgs);
+  for (i = 0; i < imgs.length; i++) {
+    imgs[i].src = imgs[i].dataset.src;
+  }
 };
 
 window.addEventListener("resize", (event) => {
