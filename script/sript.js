@@ -7,9 +7,15 @@ const section = document.getElementById("section");
 const grad_hr = document.getElementById("grad_hr");
 const right_hr = document.getElementById("right_hr");
 const navElements = document.querySelectorAll(".nav_item");
-const elements = document.querySelectorAll(".main");
+const main_sections = document.querySelectorAll(".main");
+const galleryarray = document.getElementsByClassName("gallery__img");
 
 let navpush = false;
+
+function scrollFunction() {
+  const carr = document.getElementById("carrousel_main");
+  window.scrollTo({ top: carr.offsetTop, behavior: "smooth" });
+}
 
 function setSection(delay) {
   if (section.innerHTML !== "") {
@@ -40,16 +46,16 @@ window.onload = (event) => {
     }
   }
   setSection(50);
-
+  phone_carr();
   lazyload();
 };
 
 const lazyload = () => {
   const imgs = document.querySelectorAll("img");
-  console.log(imgs);
   for (i = 0; i < imgs.length; i++) {
     imgs[i].src = imgs[i].dataset.src;
   }
+  observe_phone_carr();
 };
 
 window.addEventListener("resize", (event) => {
@@ -57,17 +63,18 @@ window.addEventListener("resize", (event) => {
   gallery.style.height = image1_height + "px";
   lilnav.style.height = image1_height + "px";
 
-  if (window.innerWidth > 960) {
-    projectsection.style.height = image1_height + "px";
-    for (i = 0; i < projectdivs.length; i++) {
-      projectdivs[i].style.height = image1_height + "px";
-    }
-  }
+  // if (window.innerWidth > 960) {
+  //   projectsection.style.height = image1_height + "px";
+  //   for (i = 0; i < projectdivs.length; i++) {
+  //     projectdivs[i].style.height = image1_height + "px";
+  //   }
+  // }
   let galleryarray = document.getElementsByClassName("gallery__img");
   for (i = 0; i < galleryarray.length; i++) {
     galleryarray[i].style.maxHeight = "none";
     // galleryarray[i].style.maxHeight= galleryarray[i].style.height;
   }
+  phone_carr();
   setSection(500);
 });
 
@@ -106,10 +113,10 @@ const hide = (intersect) => {
 
     section.classList.add("hide");
     grad_hr.style.width = window.innerWidth - 180 + "PX";
-    if (window.innerWidth < 960) {
-      grad_hr.style.width = window.innerWidth / 2 + 1 + "PX";
-      right_hr.style.width = window.innerWidth / 2 + "PX";
-    }
+    // if (window.innerWidth < 960) {
+    //   grad_hr.style.width = window.innerWidth / 2 + 1 + "PX";
+    //   right_hr.style.width = window.innerWidth / 2 + "PX";
+    // }
     showstop();
   }
 };
@@ -178,10 +185,10 @@ for (let i = 0; i < navElements.length; i++) {
       navElements[2].style.borderRight = "";
       navElements[i].classList.add("active");
 
-      for (let i = 0; i < elements.length; i++) {
-        nav_observer.unobserve(elements[i]);
+      for (let i = 0; i < main_sections.length; i++) {
+        nav_observer.unobserve(main_sections[i]);
         setTimeout(() => {
-          nav_observer.observe(elements[i]);
+          nav_observer.observe(main_sections[i]);
         }, 1000);
       }
     }
@@ -230,25 +237,25 @@ const nav_observer = new IntersectionObserver(
   }
 );
 
-for (let i = 0; i < elements.length; i++) {
-  hide_observer.observe(elements[i]);
-  show_observer.observe(elements[i]);
-  nav_observer.observe(elements[i]);
+for (let i = 0; i < main_sections.length; i++) {
+  hide_observer.observe(main_sections[i]);
+  show_observer.observe(main_sections[i]);
+  nav_observer.observe(main_sections[i]);
 }
 
 const showstop = () => {
-  for (let i = 0; i < elements.length; i++) {
-    show_observer.unobserve(elements[i]);
+  for (let i = 0; i < main_sections.length; i++) {
+    show_observer.unobserve(main_sections[i]);
     setTimeout(() => {
-      show_observer.observe(elements[i]);
+      show_observer.observe(main_sections[i]);
       //    console.log("done")
     }, 600);
   }
 };
 
 window.addEventListener("scroll", () => {
-  for (let i = 0; i < elements.length; i++) {
-    show_observer.unobserve(elements[i]);
+  for (let i = 0; i < main_sections.length; i++) {
+    show_observer.unobserve(main_sections[i]);
   }
 });
 
@@ -267,17 +274,52 @@ const onScrollStop = (callback) => {
 };
 
 onScrollStop(() => {
-  for (let i = 0; i < elements.length; i++) {
-    show_observer.observe(elements[i]);
+  for (let i = 0; i < main_sections.length; i++) {
+    show_observer.observe(main_sections[i]);
   }
 });
 
-if (window.innerWidth < 960) {
-  projectsection.addEventListener("scroll", (e) => {
-    let scroll_ratio = projectsection.scrollTop / projectsection.scrollHeight;
-    gallery.scrollTo({
-      top: scroll_ratio * gallery.scrollHeight,
-      behavior: "smooth",
+const phone_carr = () => {
+  if (window.innerWidth < 960) {
+    gallery.addEventListener("scroll", (e) => {
+      let scroll_ratio = gallery.scrollTop / gallery.scrollHeight;
+      projectsection.scrollTo({
+        top: scroll_ratio * projectsection.scrollHeight,
+        behavior: "smooth",
+      });
     });
-  });
-}
+  }
+};
+
+const phone_carr_observer = new IntersectionObserver(
+  (entries, observer) => {
+    entries.forEach((entry) => {
+      let index = entry.target.img_index;
+      if (entry.isIntersecting) {
+        set_phone_carr(entry.target, index);
+      }
+    });
+  },
+  {
+    root: gallery,
+    threshold: 0.45,
+  }
+);
+
+const set_phone_carr = (gall_img, index) => {
+  let topheight = index * gall_img.clientHeight;
+  console.log(gallery.offsetHeight);
+  console.log(topheight);
+  console.log(index);
+  gallery.scrollTo({ top: topheight + index * i, behavior: "smooth" });
+};
+
+const observe_phone_carr = () => {
+  if (window.innerWidth < 960) {
+    let galleryarray = document.querySelectorAll(".gallery__img");
+    galleryarray.forEach((img, index) => {
+      img.img_index = index;
+      phone_carr_observer.observe(img);
+    });
+  }
+};

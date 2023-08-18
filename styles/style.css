@@ -31,7 +31,6 @@ body {
 .header {
   z-index: 15;
   background-color: rgb(253, 253, 253);
-  height: 8vh;
   height: 60px;
   grid-column: 1/13;
   display: grid;
@@ -180,6 +179,8 @@ body {
   overflow: hidden;
   display: flex;
   justify-content: center;
+  background-color: transparent;
+  border: none;
 }
 
 #arrow svg {
@@ -401,29 +402,19 @@ img {
 }
 
 @media only screen and (max-width: 960px) {
-  .container {
-    display: none;
-  }
-  .mobile_container {
-    display: flex;
-  }
-  .mobile_container p {
-    font-size: 16pt;
-  }
   #section {
-    font-size: 48pt;
-    top: 16px;
-    font-family: BluuNext;
-    text-align: center;
-    position: absolute;
-    left: 0;
-    right: 0;
-    margin: 0 auto;
-    width: -moz-fit-content;
-    width: fit-content;
-  }
-  .header a {
     display: none;
+  }
+  .header {
+    display: none;
+    background-color: aqua;
+    position: relative;
+  }
+  .header * {
+    display: none;
+  }
+  .main {
+    height: 100vh;
   }
   #vincent {
     padding-top: 3rem;
@@ -431,7 +422,6 @@ img {
     white-space: normal;
     text-align: left;
     line-height: 10vw;
-    z-index: 20;
   }
   #vincent span {
     font-size: 8vw;
@@ -458,6 +448,7 @@ img {
     overflow: scroll;
   }
   .projectsection {
+    overflow: hidden;
     grid-column: 2/12;
     grid-row: 2;
     align-self: baseline;
