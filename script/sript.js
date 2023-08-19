@@ -47,7 +47,7 @@ window.onload = (event) => {
   }
   setSection(50);
   phone_carr();
-  observe_phone_carr();
+  onScrollStop_gall();
   lazyload();
 };
 
@@ -56,7 +56,7 @@ const lazyload = () => {
   for (i = 0; i < imgs.length; i++) {
     imgs[i].src = imgs[i].dataset.src;
   }
-  observe_phone_carr();
+  onScrollStop_gall();
 };
 
 window.addEventListener("resize", (event) => {
@@ -76,7 +76,7 @@ window.addEventListener("resize", (event) => {
     // galleryarray[i].style.maxHeight= galleryarray[i].style.height;
   }
   phone_carr();
-  observe_phone_carr();
+  onScrollStop_gall();
   setSection(500);
 });
 
@@ -281,6 +281,37 @@ onScrollStop(() => {
   }
 });
 
+const onScrollStop_gall = (callback) => {
+  let isScrolling;
+  gallery.addEventListener(
+    "scroll",
+    (e) => {
+      clearTimeout(isScrolling);
+      isScrolling = setTimeout(() => {
+        callback();
+      }, 250);
+    },
+    false
+  );
+};
+
+onScrollStop_gall(() => {
+  if (window.innerWidth < 960) {
+    let galleryarray = document.querySelectorAll(".gallery__img");
+    galleryarray.forEach((img, index) => {
+      img.img_index = index;
+      setTimeout(() => {
+        gallery.style.overflow = "hidden";
+      }, 200);
+      setTimeout(() => {
+        gallery.style.overflow = "scroll";
+        phone_carr_observer.observe(img);
+        console.log("observe");
+      }, 300);
+    });
+  }
+});
+
 const phone_carr = () => {
   if (window.innerWidth < 960) {
     gallery.addEventListener("scroll", (e) => {
@@ -304,7 +335,7 @@ const phone_carr_observer = new IntersectionObserver(
   },
   {
     root: gallery,
-    // threshold: 0.1,
+    threshold: 0.15,
   }
 );
 
@@ -316,21 +347,16 @@ const set_phone_carr = (gall_img, index) => {
   gallery.scrollTo({ top: topheight, behavior: "smooth" });
 };
 
-const observe_phone_carr = () => {
-  if (window.innerWidth < 960) {
-    let galleryarray = document.querySelectorAll(".gallery__img");
-    galleryarray.forEach((img, index) => {
-      img.img_index = index;
-      phone_carr_observer.observe(img);
-    });
-  }
-};
+// const observe_phone_carr = () => {
+//   if (window.innerWidth < 960) {
+//     let galleryarray = document.querySelectorAll(".gallery__img");
+//     galleryarray.forEach((img, index) => {
+//       img.img_index = index;
+//       phone_carr_observer.observe(img);
+//     });
+//   }
+// };
 
-gallery.addEventListener("scroll", () => {
-  setTimeout(() => {
-    gallery.style.overflow = "hidden";
-  }, 50);
-  setTimeout(() => {
-    gallery.style.overflow = "scroll";
-  }, 200);
-});
+// gallery.addEventListener("scroll", () => {
+
+// });
