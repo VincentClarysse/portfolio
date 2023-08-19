@@ -506,7 +506,7 @@ img {
   }
 
   .main {
-    height: 100dvh;
+    height: 100svh;
   }
 
   #vincent {
@@ -549,7 +549,6 @@ img {
 
   .projectsection {
     padding: 0px;
-    background-color: red;
     overflow: hidden;
     grid-column: 2/12;
     grid-row: 2;
@@ -564,6 +563,11 @@ img {
       height: 100%;
       padding: 0px;
     }
+  }
+
+  #carrousel_main {
+    height: 100lvh;
+    background-color: aqua;
   }
 
   #about_main {
@@ -589,6 +593,9 @@ img {
 }
 
 @media only screen and (max-width: 540px) {
+  #gallery {
+    grid-column: 1/13;
+  }
   #section {
     font-size: 40pt;
     top: 24px;
