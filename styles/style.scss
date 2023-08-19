@@ -493,16 +493,6 @@ img {
 
   #section {
     display: none;
-    // font-size: 48pt;
-    // top: 16px;
-    // font-family: BluuNext;
-    // text-align: center;
-    // position: absolute;
-    // left: 0;
-    // right: 0;
-    // margin: 0 auto;
-    // width: fit-content;
-    // // background-color: red;
   }
 
   .header {
@@ -516,11 +506,11 @@ img {
   }
 
   .main {
-    height: 100vh;
+    height: 100dvh;
   }
 
   #vincent {
-    padding-top: 3rem;
+    margin: 4rem 0;
     font-size: 16vw;
     white-space: normal;
     text-align: left;
@@ -534,6 +524,8 @@ img {
   #fs {
     font-size: 12vw;
     grid-row: 3;
+    margin: 4rem 0;
+    padding: 0;
   }
 
   #arrow {
@@ -556,15 +548,21 @@ img {
   }
 
   .projectsection {
+    padding: 0px;
+    background-color: red;
     overflow: hidden;
     grid-column: 2/12;
     grid-row: 2;
     align-self: baseline;
     height: 100%;
-    scroll-padding-top: 0px;
+    // scroll-padding-top: 0px;
     height: 100%;
+    h2 {
+      margin: 1rem 0;
+    }
     .projectdiv {
       height: 100%;
+      padding: 0px;
     }
   }
 
@@ -585,6 +583,7 @@ img {
     #about_me {
       grid-column: 2/12;
       height: fit-content;
+      margin-top: 0;
     }
   }
 }

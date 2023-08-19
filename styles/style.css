@@ -418,10 +418,10 @@ img {
     display: none;
   }
   .main {
-    height: 100vh;
+    height: 100dvh;
   }
   #vincent {
-    padding-top: 3rem;
+    margin: 4rem 0;
     font-size: 16vw;
     white-space: normal;
     text-align: left;
@@ -434,6 +434,8 @@ img {
   #fs {
     font-size: 12vw;
     grid-row: 3;
+    margin: 4rem 0;
+    padding: 0;
   }
   #arrow {
     grid-column: 4/10;
@@ -452,16 +454,21 @@ img {
     overflow: scroll;
   }
   .projectsection {
+    padding: 0px;
+    background-color: red;
     overflow: hidden;
     grid-column: 2/12;
     grid-row: 2;
     align-self: baseline;
     height: 100%;
-    scroll-padding-top: 0px;
     height: 100%;
+  }
+  .projectsection h2 {
+    margin: 1rem 0;
   }
   .projectsection .projectdiv {
     height: 100%;
+    padding: 0px;
   }
   #about_main {
     margin: 2em 0;
@@ -481,6 +488,7 @@ img {
     grid-column: 2/12;
     height: -moz-fit-content;
     height: fit-content;
+    margin-top: 0;
   }
 }
 @media only screen and (max-width: 540px) {
