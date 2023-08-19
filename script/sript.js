@@ -12,11 +12,6 @@ const galleryarray = document.getElementsByClassName("gallery__img");
 
 let navpush = false;
 
-function scrollFunction() {
-  const carr = document.getElementById("carrousel_main");
-  window.scrollTo({ top: carr.offsetTop, behavior: "smooth" });
-}
-
 function setSection(delay) {
   if (section.innerHTML !== "") {
     setTimeout(() => {
@@ -46,7 +41,6 @@ window.onload = (event) => {
     }
   }
   setSection(50);
-  phone_carr();
   onScrollStop_gall();
   lazyload();
 };
@@ -289,7 +283,7 @@ const onScrollStop_gall = (callback) => {
       clearTimeout(isScrolling);
       isScrolling = setTimeout(() => {
         callback();
-      }, 250);
+      }, 50);
     },
     false
   );
@@ -300,14 +294,8 @@ onScrollStop_gall(() => {
     let galleryarray = document.querySelectorAll(".gallery__img");
     galleryarray.forEach((img, index) => {
       img.img_index = index;
-      setTimeout(() => {
-        gallery.style.overflow = "hidden";
-      }, 200);
-      setTimeout(() => {
-        gallery.style.overflow = "scroll";
-        phone_carr_observer.observe(img);
-        console.log("observe");
-      }, 300);
+      phone_carr_observer.observe(img);
+      phone_carr();
     });
   }
 });
@@ -331,19 +319,17 @@ const phone_carr_observer = new IntersectionObserver(
       if (entry.isIntersecting) {
         set_phone_carr(entry.target, index);
       }
+      phone_carr_observer.unobserve(entry.target);
     });
   },
   {
     root: gallery,
-    threshold: 0.15,
+    threshold: 0.5,
   }
 );
 
 const set_phone_carr = (gall_img, index) => {
   let topheight = index * gall_img.clientHeight + index * 10;
-  console.log(gallery.offsetHeight);
-  console.log(topheight);
-
   gallery.scrollTo({ top: topheight, behavior: "smooth" });
 };
 
