@@ -263,6 +263,7 @@ img {
 }
 
 .gallery__img {
+  z-index: 20;
   margin-bottom: 10px;
   -o-object-fit: cover;
      object-fit: cover;

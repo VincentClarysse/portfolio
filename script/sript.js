@@ -304,7 +304,7 @@ const phone_carr_observer = new IntersectionObserver(
   },
   {
     root: gallery,
-    threshold: 0.35,
+    // threshold: 0.1,
   }
 );
 
@@ -325,3 +325,12 @@ const observe_phone_carr = () => {
     });
   }
 };
+
+gallery.addEventListener("scroll", () => {
+  setTimeout(() => {
+    gallery.style.overflow = "hidden";
+  }, 50);
+  setTimeout(() => {
+    gallery.style.overflow = "scroll";
+  }, 200);
+});
