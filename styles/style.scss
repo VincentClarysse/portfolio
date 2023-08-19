@@ -314,13 +314,16 @@ img {
   // border: solid 1px black;
 }
 
+#gallery a:last-child img {
+  margin-bottom: 0px;
+}
+
 #gallery::-webkit-scrollbar {
   //chrome opera safari
   display: none;
 }
 
 .gallery__img {
-  // scroll-snap-align: start;
   margin-bottom: 10px;
   object-fit: cover;
   width: 100%;

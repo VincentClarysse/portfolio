@@ -254,6 +254,10 @@ img {
   grid-column: 4/10;
 }
 
+#gallery a:last-child img {
+  margin-bottom: 0px;
+}
+
 #gallery::-webkit-scrollbar {
   display: none;
 }

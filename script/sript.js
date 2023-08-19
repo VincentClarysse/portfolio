@@ -47,6 +47,7 @@ window.onload = (event) => {
   }
   setSection(50);
   phone_carr();
+  observe_phone_carr();
   lazyload();
 };
 
@@ -75,6 +76,7 @@ window.addEventListener("resize", (event) => {
     // galleryarray[i].style.maxHeight= galleryarray[i].style.height;
   }
   phone_carr();
+  observe_phone_carr();
   setSection(500);
 });
 
@@ -302,16 +304,16 @@ const phone_carr_observer = new IntersectionObserver(
   },
   {
     root: gallery,
-    threshold: 0.45,
+    threshold: 0.35,
   }
 );
 
 const set_phone_carr = (gall_img, index) => {
-  let topheight = index * gall_img.clientHeight;
+  let topheight = index * gall_img.clientHeight + index * 10;
   console.log(gallery.offsetHeight);
   console.log(topheight);
-  console.log(index);
-  gallery.scrollTo({ top: topheight + index * i, behavior: "smooth" });
+
+  gallery.scrollTo({ top: topheight, behavior: "smooth" });
 };
 
 const observe_phone_carr = () => {
