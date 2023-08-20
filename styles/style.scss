@@ -302,6 +302,9 @@ img {
 }
 
 #gallery {
+  .indicatorDiv {
+    display: none;
+  }
   scroll-behavior: smooth;
   overflow: hidden;
   // scroll-snap-type: x mandatory;
@@ -498,16 +501,15 @@ img {
 
   .header {
     display: none;
-    background-color: aqua;
-    position: relative;
   }
 
   .header * {
     display: none;
   }
 
-  .main {
+  #landing_main {
     height: 100svh;
+    // border-bottom: solid black 1px;
   }
 
   #vincent {
@@ -540,11 +542,34 @@ img {
     display: none;
   }
   #gallery {
-    grid-column: 2/12;
+    .indicatorDiv {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+      align-items: center;
+      width: 8%;
+      position: absolute;
+      height: inherit;
+      box-sizing: border-box;
+      padding: 10% 0;
+
+      .circle {
+        border-radius: 50%;
+        background-color: rgba(255, 255, 255, 0.599);
+        width: 15%;
+        aspect-ratio: 1/1;
+        box-shadow: rgba(0, 0, 0, 0.6) 0px 0px 5px;
+        transition-timing-function: ease-out;
+        transition-duration: 250ms;
+      }
+      .active_circle {
+        background-color: $color1;
+        width: 25%;
+      }
+    }
+    grid-column: 1/13;
     overflow: hidden;
     grid-row: 1;
-
-    margin: 2em 0;
     overflow: scroll;
   }
 
@@ -561,18 +586,29 @@ img {
       margin: 1rem 0;
     }
     .projectdiv {
+      box-sizing: border-box;
       height: 100%;
       padding: 0px;
+      padding-bottom: 2rem;
     }
   }
 
   #carrousel_main {
     height: 100lvh;
-    background-color: aqua;
+    background-color: $color2;
+    // border-bottom: 1px black solid;
+    // border-top: 1px black solid;
+    grid-template-rows: auto auto;
+
+    // background-image: linear-gradient(
+    //   transparent 0%,
+    //   transparent 67%,
+    //   $color1 100%
+    // );
   }
 
   #about_main {
-    margin: 2em 0;
+    margin: 1rem 0;
     height: fit-content;
 
     .subtitle {
@@ -589,14 +625,12 @@ img {
       grid-column: 2/12;
       height: fit-content;
       margin-top: 0;
+      padding: 1rem 0;
     }
   }
 }
 
 @media only screen and (max-width: 540px) {
-  #gallery {
-    grid-column: 1/13;
-  }
   #section {
     font-size: 40pt;
     top: 24px;

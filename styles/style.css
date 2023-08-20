@@ -253,6 +253,9 @@ img {
   width: 100%;
   grid-column: 4/10;
 }
+#gallery .indicatorDiv {
+  display: none;
+}
 
 #gallery a:last-child img {
   margin-bottom: 0px;
@@ -412,13 +415,11 @@ img {
   }
   .header {
     display: none;
-    background-color: aqua;
-    position: relative;
   }
   .header * {
     display: none;
   }
-  .main {
+  #landing_main {
     height: 100svh;
   }
   #vincent {
@@ -448,11 +449,34 @@ img {
     display: none;
   }
   #gallery {
-    grid-column: 2/12;
+    grid-column: 1/13;
     overflow: hidden;
     grid-row: 1;
-    margin: 2em 0;
     overflow: scroll;
+  }
+  #gallery .indicatorDiv {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 8%;
+    position: absolute;
+    height: inherit;
+    box-sizing: border-box;
+    padding: 10% 0;
+  }
+  #gallery .indicatorDiv .circle {
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.599);
+    width: 15%;
+    aspect-ratio: 1/1;
+    box-shadow: rgba(0, 0, 0, 0.6) 0px 0px 5px;
+    transition-timing-function: ease-out;
+    transition-duration: 250ms;
+  }
+  #gallery .indicatorDiv .active_circle {
+    background-color: rgb(255, 248, 229);
+    width: 25%;
   }
   .projectsection {
     padding: 0px;
@@ -467,15 +491,18 @@ img {
     margin: 1rem 0;
   }
   .projectsection .projectdiv {
+    box-sizing: border-box;
     height: 100%;
     padding: 0px;
+    padding-bottom: 2rem;
   }
   #carrousel_main {
     height: 100lvh;
-    background-color: aqua;
+    background-color: rgb(253, 253, 253);
+    grid-template-rows: auto auto;
   }
   #about_main {
-    margin: 2em 0;
+    margin: 1rem 0;
     height: -moz-fit-content;
     height: fit-content;
   }
@@ -493,12 +520,10 @@ img {
     height: -moz-fit-content;
     height: fit-content;
     margin-top: 0;
+    padding: 1rem 0;
   }
 }
 @media only screen and (max-width: 540px) {
-  #gallery {
-    grid-column: 1/13;
-  }
   #section {
     font-size: 40pt;
     top: 24px;

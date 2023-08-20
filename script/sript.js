@@ -9,8 +9,16 @@ const right_hr = document.getElementById("right_hr");
 const navElements = document.querySelectorAll(".nav_item");
 const main_sections = document.querySelectorAll(".main");
 const galleryarray = document.getElementsByClassName("gallery__img");
+const indicatorDiv = document.querySelector(".indicatorDiv");
 
 let navpush = false;
+
+for (i = 0; i < galleryarray.length; i++) {
+  const circle = document.createElement("div");
+  indicatorDiv.appendChild(circle);
+  circle.classList.add("circle");
+}
+const circle_indicator = document.querySelectorAll(".circle");
 
 function setSection(delay) {
   if (section.innerHTML !== "") {
@@ -324,25 +332,15 @@ const phone_carr_observer = new IntersectionObserver(
   },
   {
     root: gallery,
-    threshold: 0.5,
+    threshold: 0.45,
   }
 );
 
 const set_phone_carr = (gall_img, index) => {
   let topheight = index * gall_img.clientHeight + index * 10;
   gallery.scrollTo({ top: topheight, behavior: "smooth" });
+  circle_indicator.forEach((circ) => {
+    circ.classList.remove("active_circle");
+  });
+  circle_indicator[index].classList.add("active_circle");
 };
-
-// const observe_phone_carr = () => {
-//   if (window.innerWidth < 960) {
-//     let galleryarray = document.querySelectorAll(".gallery__img");
-//     galleryarray.forEach((img, index) => {
-//       img.img_index = index;
-//       phone_carr_observer.observe(img);
-//     });
-//   }
-// };
-
-// gallery.addEventListener("scroll", () => {
-
-// });
