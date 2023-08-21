@@ -17,6 +17,9 @@ for (i = 0; i < galleryarray.length; i++) {
   const circle = document.createElement("div");
   indicatorDiv.appendChild(circle);
   circle.classList.add("circle");
+  if (i == 0) {
+    circle.classList.add("active_circle");
+  }
 }
 const circle_indicator = document.querySelectorAll(".circle");
 

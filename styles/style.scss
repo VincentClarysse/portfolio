@@ -218,8 +218,7 @@ body {
   grid-row: 2;
   align-self: center;
   justify-self: center;
-  transition-timing-function: ease-in-out;
-  transition-duration: 200ms;
+  // transition-timing-function: ease-in-out;
   width: 70%;
   overflow: hidden;
 
@@ -227,15 +226,24 @@ body {
   justify-content: center;
   background-color: transparent;
   border: none;
+
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  animation-name: floating;
+}
+
+@keyframes floating {
+  0% {
+    transform: translateY(0%);
+  }
+  50% {
+    transform: translateY(6%);
+  }
 }
 
 #arrow svg {
   // background-color: red;
   margin: auto;
-}
-
-#arrow:hover {
-  transform: translateY(10%);
 }
 
 #carrousel_main {
@@ -249,10 +257,10 @@ body {
 }
 
 .projectsection {
-  scroll-padding-top: -50px;
+  // scroll-padding-top: -50px;
   grid-column: 10/13;
   // grid-row: 2/3;
-  overflow-y: scroll;
+  overflow-y: hidden;
 
   // -ms-overflow-style: none; /* IE and Edge */
   // scrollbar-width: none; /* Firefox */
@@ -483,6 +491,10 @@ img {
   box-sizing: border-box;
 }
 
+.mobile_section {
+  display: none;
+}
+
 @media only screen and (max-width: 960px) {
   // .container {
   //   display: none;
@@ -494,6 +506,11 @@ img {
   //     font-size: 16pt;
   //   }
   // }
+
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 0;
+  }
 
   #section {
     display: none;
@@ -594,23 +611,57 @@ img {
   }
 
   #carrousel_main {
+    position: relative;
+    box-sizing: border-box;
+    padding-top: 3rem;
     height: 100lvh;
     background-color: $color2;
-    // border-bottom: 1px black solid;
-    // border-top: 1px black solid;
     grid-template-rows: auto auto;
+    border-top: 10vw solid $color1;
+    // margin-bottom: 6vw;
+  }
 
-    // background-image: linear-gradient(
-    //   transparent 0%,
-    //   transparent 67%,
-    //   $color1 100%
-    // );
+  .mobile_section {
+    display: block;
+    position: absolute;
+    top: -8vw;
+    right: 0;
+    font-size: 12vw;
+    width: auto;
+    text-align: right;
+    box-sizing: border-box;
+    padding-right: 10vw;
+    width: 100vw;
+  }
+
+  .mobile_section::before {
+    position: absolute;
+    content: "";
+    display: block;
+    width: 39vw;
+    height: 1px;
+    background: #000000;
+    top: 56%;
+  }
+
+  .mobile_section::after {
+    position: absolute;
+    content: "";
+    display: block;
+    width: 8vw;
+    height: 1px;
+    background: #000000;
+    top: 56%;
+    right: 0;
   }
 
   #about_main {
-    margin: 1rem 0;
+    position: relative;
+    box-sizing: border-box;
+    padding-top: 3rem;
     height: fit-content;
-
+    min-height: auto;
+    border-top: 6vw solid $color2;
     .subtitle {
       font-size: 32pt;
     }
